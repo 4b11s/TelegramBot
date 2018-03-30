@@ -46,7 +46,7 @@ def CommandGtIm(message):
         bot.send_message(message.chat.id, gtIm)
         message_text = message.text
         message_text = message_text.replace("/gtIm","")
-        img = parsing.getImg(message_text)
+        img = getImg(message_text)
         log.log(message, gtIm+"\n       "+img)
         imgName = "src/img/request/"+translet(message_text)+translet(" "+message.from_user.first_name)+translet(" "+message.from_user.last_name) + ".jpg"
         urll3.urlretrieve(img,imgName)
