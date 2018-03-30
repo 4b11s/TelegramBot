@@ -3,13 +3,14 @@ from config import *
 import urllib.request as urll3
 import log
 import database
-import parsing
+from parsing import getImg
 import admin
 
-bot = telebot.TeleBot(token)
-print(bot.get_me())
 
-def translet(name):
+bot = telebot.TeleBot(token) #Автаризирует бота
+print(bot.get_me()) #Выводит информацию о боте
+
+def translet(name): #Замена русских букв на англ
     for key in slovar:
         name = name.replace(key, slovar[key])
     return name
@@ -33,7 +34,6 @@ def CommandJoke(message):
 @bot.message_handler(commands=['help']) #Команда помощи
 def CommandHelp(message):
 	bot.send_message(message.chat.id, helpText)
-	print(message)
 	log.log(message, helpText)
 
 
@@ -58,20 +58,22 @@ def CommandGtIm(message):
         print("Ошибка N1\n")
         bot.send_message(message.chat.id, "Неизвестная ошибка, возможно вы не ввели запрос или сервер с картинками не доступен")
 
-@bot.message_handler(commands=['getlog']) #Команда получения логов
-def CommandgetLog(message):
-	otv = admin.getLog(message)
-	if type(otv) == str:
-		bot.send_message(message.chat.id, otv)
-	else:
-		bot.send_chat_action(message.from_user.id, 'upload_fille')
-		bot.send_fille(message.from_user.id,otv)
-	log.log(message, otv)	
+#@bot.message_handler(commands=['getlog']) #Команда получения логов
+#def CommandgetLog(message):
+#	otv = admin.getLog(message)
+#	if type(otv) == str:
+#		bot.send_message(message.chat.id, otv)
+#	else:
+#		bot.send_chat_action(message.from_user.id, 'upload_fille')
+#		bot.send_fille(message.from_user.id,otv)
+#	log.log(message, otv)	
 
 @bot.message_handler(content_types=['text']) #Реакции на текст
 def textconfig(message):
     bot.send_message(message.chat.id, erorText)
     log.log(message, erorText)
-
-
-bot.polling(none_stop=True, interval=0)
+	
+	
+	
+	
+bot.polling(none_stop=True, interval=0) #Запускает цикл програмы
