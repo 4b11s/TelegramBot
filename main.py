@@ -6,9 +6,11 @@ import database
 from parsing import getImg
 import admin
 
+gtmEnter = "false"
 
 bot = telebot.TeleBot(token) #Автаризирует бота
 print(bot.get_me()) #Выводит информацию о боте
+
 
 def translet(name): #Замена русских букв на англ
     for key in slovar:
@@ -31,6 +33,8 @@ def CommandJoke(message):
     log.log(message, "/joke_@"+joke)
 
 
+	
+	
 @bot.message_handler(commands=['help']) #Команда помощи
 def CommandHelp(message):
 	bot.send_message(message.chat.id, helpText)
@@ -38,42 +42,36 @@ def CommandHelp(message):
 
 
 
-
-
-@bot.message_handler(commands=['gtIm'])#Команда поиска картинки
+@bot.message_handler(func=lambda message: gtmEnter == "false", commands=['gtIm'])#Команда поиска картинки
 def CommandGtIm(message):
-    try:
-        bot.send_message(message.chat.id, gtIm)
-        message_text = message.text
-        message_text = message_text.replace("/gtIm","")
-        img = getImg(message_text)
-        log.log(message, gtIm+"\n       "+img)
-        imgName = "src/img/request/"+translet(message_text)+translet(" "+message.from_user.first_name)+translet(" "+message.from_user.last_name) + ".jpg"
-        urll3.urlretrieve(img,imgName)
-        img = open(imgName, 'rb')
-        bot.send_chat_action(message.from_user.id, 'upload_photo')
-        bot.send_photo(message.from_user.id,img)
-        img.close()
-    except:
-        print("Ошибка N1\n")
-        bot.send_message(message.chat.id, "Неизвестная ошибка, возможно вы не ввели запрос или сервер с картинками не доступен")
+		bot.send_message(message.chat.id, "Введите запрос")
+		global gtmEnter
+		gtmEnter = "true"
 
-#@bot.message_handler(commands=['getlog']) #Команда получения логов
-#def CommandgetLog(message):
-#	otv = admin.getLog(message)
-#	if type(otv) == str:
-#		bot.send_message(message.chat.id, otv)
-#	else:
-#		bot.send_chat_action(message.from_user.id, 'upload_fille')
-#		bot.send_fille(message.from_user.id,otv)
-#	log.log(message, otv)	
 
+		
+@bot.message_handler(func=lambda message: gtmEnter == "true")
+def sendGtmIm(message):
+	try:
+		global gtmEnter
+		gtmEnter = "false"
+		message_text = message.text
+		img = getImg(message_text)
+		log.log(message, "Картинка по запросу:"+"\n       "+img)
+		imgName = "src/img/request/"+translet(message_text)+translet(" "+message.from_user.first_name)+translet(" "+message.from_user.last_name) + ".jpg"
+		urll3.urlretrieve(img,imgName)
+		img = open(imgName, 'rb')
+		bot.send_chat_action(message.from_user.id, 'upload_photo')
+		bot.send_photo(message.from_user.id,img)
+		img.close()
+	except:
+		print("Ошибка в методе sendGtmIm")
+		bot.send_message(message.chat.id, "Неизвестная ошибка, возможно вы не ввели запрос или сервер с картинками не доступен")
+
+		
 @bot.message_handler(content_types=['text']) #Реакции на текст
 def textconfig(message):
     bot.send_message(message.chat.id, erorText)
     log.log(message, erorText)
-	
-	
-	
 	
 bot.polling(none_stop=True, interval=0) #Запускает цикл програмы

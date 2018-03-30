@@ -13,3 +13,46 @@
  Текст = /gtIm Новгород
 Ответ: Картинка по запросу:
        https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcj35Uyo9QX3HZhe8bwBtvvyL0qKtM0gv9wrwf4ureJ8-tAoipnLs9Jmo
+
+ ------------------------------------------------------
+2018-03-30-17.56.55
+Сообщение от Артём Базыль. (id = 431839224) 
+ Текст = /help
+Ответ: Вот что может бот:
+/gtIm [слово] - выдаст случайную картинку по запросу.
+/joke - введите эту команду, и бот пошутит.
+
+ ------------------------------------------------------
+2018-03-30-18.04.01
+Сообщение от Артём Базыль. (id = 431839224) 
+ Текст = Котики
+Ответ: Картинка по запросу:
+       /textinputassistant/tia.png
+
+ ------------------------------------------------------
+2018-03-30-18.04.56
+Сообщение от Артём Базыль. (id = 431839224) 
+ Текст = Нет
+Ответ: Картинка по запросу:
+       https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT68rRE2SCv4l2Eceywx251bcSF09ajOJPUoiAbYEHVX4Bn4MPH-9a8ag
+
+ ------------------------------------------------------
+2018-03-30-18.08.23
+Сообщение от Артём Базыль. (id = 431839224) 
+ Текст = Да
+Ответ: Картинка по запросу:
+       https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_zR6UdlMzsEkzg5z6TbTnxTHke48QaqFAUqpKwBHMxtqNI7QWA7Jn3jc
+
+ ------------------------------------------------------
+2018-03-30-18.08.23
+Сообщение от Артём Базыль. (id = 431839224) 
+ Текст = Нгр
+Ответ: Картинка по запросу:
+       https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtCq_v8h1pFsHrT-P8qslQkrwbnCxTFURdj190oBnnUINLD2x3zS2eXYc
+
+ ------------------------------------------------------
+2018-03-30-18.09.42
+Сообщение от Артём Базыль. (id = 431839224) 
+ Текст = Кн
+Ответ: Картинка по запросу:
+       https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxRzGRuD0SaeDN2iVnBfwQ69SEA-avJmNhYolbKdu_jLb0tvAafDVRrJs
