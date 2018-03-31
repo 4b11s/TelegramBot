@@ -19,14 +19,14 @@ def translet(name): #Замена русских букв на англ
 
 	
 	
-@bot.message_handler(commands=['start']) #Команда начала роботы
+@bot.message_handler(func=lambda message: gtmEnter == "false", commands=['start']) #Команда начала роботы
 def CommandStart(message):
     bot.send_message(message.chat.id, startText)
     log.log(message, startText)	
 	
 	
 	
-@bot.message_handler(commands=['joke']) #Команда выдающая шутки
+@bot.message_handler(func=lambda message: gtmEnter == "false", commands=['joke']) #Команда выдающая шутки
 def CommandJoke(message):
     joke = database.getJoke()
     bot.send_message(message.chat.id, joke)
@@ -35,7 +35,7 @@ def CommandJoke(message):
 
 	
 	
-@bot.message_handler(commands=['help']) #Команда помощи
+@bot.message_handler(func=lambda message: gtmEnter == "false", commands=['help']) #Команда помощи
 def CommandHelp(message):
 	bot.send_message(message.chat.id, helpText)
 	log.log(message, helpText)
@@ -71,7 +71,8 @@ def sendGtmIm(message):
 		
 @bot.message_handler(content_types=['text']) #Реакции на текст
 def textconfig(message):
-    bot.send_message(message.chat.id, erorText)
-    log.log(message, erorText)
+	erorText = "Я не понимаю, введи /help"
+	bot.send_message(message.chat.id, erorText)
+	log.log(message, erorText)
 	
 bot.polling(none_stop=True, interval=0) #Запускает цикл програмы
