@@ -22,7 +22,7 @@ def translet(name): #Замена русских букв на англ
 @bot.message_handler(func=lambda message: gtmEnter == False, commands=['start']) #Команда начала роботы
 def CommandStart(message):
     bot.send_message(message.chat.id, startText)
-    log.log(message, startText)	
+#    #log.log(message, startText)	
 	
 	
 	
@@ -30,7 +30,7 @@ def CommandStart(message):
 def CommandJoke(message):
     joke = database.getJoke()
     bot.send_message(message.chat.id, joke)
-    log.log(message, "/joke_@"+joke)
+#    #log.log(message, "/joke_@"+joke)
 
 
 	
@@ -38,7 +38,7 @@ def CommandJoke(message):
 @bot.message_handler(func=lambda message: gtmEnter == False, commands=['help']) #Команда помощи
 def CommandHelp(message):
 	bot.send_message(message.chat.id, helpText)
-	log.log(message, helpText)
+	#log.log(message, helpText)
 
 
 
@@ -57,7 +57,7 @@ def sendGtmIm(message):
 		gtmEnter = False
 		message_text = message.text
 		img = getImg(message_text)
-		log.log(message, "Картинка по запросу:"+"\n       "+img)
+		#log.log(message, "Картинка по запросу:"+"\n       "+img)
 		imgName = "src/img/request/"+translet(message_text)+translet(" "+message.from_user.first_name)+translet(" "+message.from_user.last_name) + ".jpg"
 		urll3.urlretrieve(img,imgName)
 		img = open(imgName, 'rb')
@@ -73,6 +73,6 @@ def sendGtmIm(message):
 def textconfig(message):
 	erorText = "Я не понимаю, введи /help"
 	bot.send_message(message.chat.id, erorText)
-	log.log(message, erorText)
+	#log.log(message, erorText)
 	
 bot.polling(none_stop=True, interval=0) #Запускает цикл програмы

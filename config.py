@@ -1,5 +1,5 @@
 #           Неизменяемые значения
-token = "542070902:AAF_Y3ChYrObOsjWwbIyoIoTvQfqp1mU8JQ" #Токен бота(ключь)
+token = "542070902:AAF_Y3ChYrObOsjWwbIyoIoTvQfqp1mU8JQ" #Токен бота(ключь) s
 googleUrlFoSerch = "https://www.google.com/search?q=" #Неизменимая ссылка для поиска
 artbazid = 431839224
 
