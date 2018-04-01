@@ -9,6 +9,7 @@ __pycache__/
 #ExitFille
 logs/
 src/img/request
+.idea/
 
 # Distribution / packaging
 .Python
