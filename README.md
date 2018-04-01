@@ -1,1 +1,1 @@
-# TelegramBot
+# This is Telegram Bot - @DosugBot

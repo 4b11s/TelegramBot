@@ -25,8 +25,3 @@ def log(message, ANSWER):
 	logFille.write(logText+"\n")
 	logFille.write("Ответ: "+ANSWER+"\n")
 	logFille.close()
-	
-	
-def getLogFile():
-	log = open(nameFile, 'rb')
-	return log

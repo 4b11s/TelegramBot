@@ -6,7 +6,7 @@ import database
 from parsing import getImg
 import admin
 
-gtmEnter = "false"
+gtmEnter = False
 
 bot = telebot.TeleBot(token) #Автаризирует бота
 print(bot.get_me()) #Выводит информацию о боте
@@ -19,14 +19,14 @@ def translet(name): #Замена русских букв на англ
 
 	
 	
-@bot.message_handler(func=lambda message: gtmEnter == "false", commands=['start']) #Команда начала роботы
+@bot.message_handler(func=lambda message: gtmEnter == False, commands=['start']) #Команда начала роботы
 def CommandStart(message):
     bot.send_message(message.chat.id, startText)
     log.log(message, startText)	
 	
 	
 	
-@bot.message_handler(func=lambda message: gtmEnter == "false", commands=['joke']) #Команда выдающая шутки
+@bot.message_handler(func=lambda message: gtmEnter == False, commands=['joke']) #Команда выдающая шутки
 def CommandJoke(message):
     joke = database.getJoke()
     bot.send_message(message.chat.id, joke)
@@ -35,26 +35,26 @@ def CommandJoke(message):
 
 	
 	
-@bot.message_handler(func=lambda message: gtmEnter == "false", commands=['help']) #Команда помощи
+@bot.message_handler(func=lambda message: gtmEnter == False, commands=['help']) #Команда помощи
 def CommandHelp(message):
 	bot.send_message(message.chat.id, helpText)
 	log.log(message, helpText)
 
 
 
-@bot.message_handler(func=lambda message: gtmEnter == "false", commands=['gtIm'])#Команда поиска картинки
+@bot.message_handler(func=lambda message: gtmEnter == False, commands=['gtIm'])#Команда поиска картинки
 def CommandGtIm(message):
 		bot.send_message(message.chat.id, "Введите запрос")
 		global gtmEnter
-		gtmEnter = "true"
+		gtmEnter = True
 
 
 		
-@bot.message_handler(func=lambda message: gtmEnter == "true")
+@bot.message_handler(func=lambda message: gtmEnter == True)
 def sendGtmIm(message):
 	try:
 		global gtmEnter
-		gtmEnter = "false"
+		gtmEnter = False
 		message_text = message.text
 		img = getImg(message_text)
 		log.log(message, "Картинка по запросу:"+"\n       "+img)

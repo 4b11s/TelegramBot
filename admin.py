@@ -8,10 +8,5 @@ def checkPermishen(id):
 	else:
 		return 0;
 
-def getLog(message):
-	chek = checkPermishen(message.chat.id)
-	if chek == 1:
-		logFile = log.getLogFile()
-		return logFile
-	else:
-		return "Простите, но у вас нет прав на это"
+
+		

@@ -1,0 +1,5 @@
+beautifulsoup4==4.6.0
+DateTime==4.2
+enum34==1.1.6
+pyTelegramBotAPI==3.6.2
+requests==2.7.0
